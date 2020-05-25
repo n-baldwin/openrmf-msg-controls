@@ -10,8 +10,10 @@ namespace tests.Models
         public void Test_NewFilterIsValid()
         {
             Filter filter = new Filter();
-            Assert.True(filter != null);
+
+            // Testing
             Assert.True(filter.impactLevel == "low");
+            Assert.False(filter == null);
             Assert.False(filter.pii);
         }
     
@@ -19,13 +21,13 @@ namespace tests.Models
         public void Test_FilterWithDataIsValid()
         {
             Filter filter = new Filter();
+
             filter.impactLevel = "high";
             filter.pii = true;
 
-            // test things out
-            Assert.True(filter != null);
-            Assert.True (!string.IsNullOrEmpty(filter.impactLevel));
-            Assert.True (filter.pii);
+            // Testing
+            Assert.True(filter.impactLevel == "high");
+            Assert.True(filter.pii);
         }
 
     }

@@ -9,57 +9,59 @@ namespace tests.Models
         [Fact]
         public void Test_NewControlIsValid()
         {
-            Control ctrl = new Control();
-            Assert.True(ctrl != null);
+            Control control = new Control();
+
+            // Testing
+            Assert.False(control == null);
         }
     
         [Fact]
         public void Test_ControlWithDataIsValid()
         {
-            Control ctrl = new Control();
-            ctrl.family = "AU-9";
-            ctrl.number = "AU-9";
-            ctrl.title = "Audit Control";
-            ctrl.lowimpact = true;
-            ctrl.moderateimpact = true;
-            ctrl.highimpact = true;
-            ctrl.supplementalGuidance = "Do this once and forever";
-            ctrl.id = Guid.NewGuid();
+            Control control = new Control();
 
-            // test things out
-            Assert.True(ctrl != null);
-            Assert.True (!string.IsNullOrEmpty(ctrl.family));
-            Assert.True (!string.IsNullOrEmpty(ctrl.number));
-            Assert.True (!string.IsNullOrEmpty(ctrl.title));
-            Assert.True (ctrl.lowimpact);
-            Assert.True (ctrl.moderateimpact);
-            Assert.True (ctrl.highimpact);
-            Assert.True (!string.IsNullOrEmpty(ctrl.supplementalGuidance));
-            Assert.True (ctrl.id != Guid.Empty);
-            Assert.True (ctrl.childControls != null);
-            Assert.True (ctrl.childControls.Count == 0);
+            control.family = "AU-9";
+            control.number = "AU-9";
+            control.title = "Audit Control";
+            control.lowimpact = true;
+            control.moderateimpact = true;
+            control.highimpact = true;
+            control.supplementalGuidance = "Do this once and forever";
+            control.id = Guid.NewGuid();
+
+            // Testing
+            Assert.True(control.family == "AU-9");
+            Assert.True(control.number == "AU-9");
+            Assert.True(control.title == "Audit Control");
+            Assert.True(control.supplementalGuidance == "Do this once and forever");
+            Assert.True(control.lowimpact);
+            Assert.True(control.moderateimpact);
+            Assert.True(control.highimpact);
+            Assert.False(control.id == null);
+            Assert.False(control.childControls == null);
         }
 
         [Fact]
         public void Test_NewChildControlIsValid()
         {
-            ChildControl ctrl = new ChildControl();
-            Assert.True(ctrl != null);
+            ChildControl childControl = new ChildControl();
+
+            // Testing
+            Assert.False(childControl == null);
         }
 
         [Fact]
         public void Test_ChildControlWithDataIsValid()
         {
-            ChildControl ctrl = new ChildControl();
-            ctrl.description = "AU-9";
-            ctrl.number = "AU-9";
+            ChildControl childControl = new ChildControl();
 
-            // test things out
-            Assert.True(ctrl != null);
-            Assert.True (!string.IsNullOrEmpty(ctrl.description));
-            Assert.True (!string.IsNullOrEmpty(ctrl.number));
-            Assert.True (ctrl.id != Guid.Empty);
+            childControl.description = "AU-9";
+            childControl.number = "AU-9";
+
+            // Testing
+            Assert.True(childControl.description == "AU-9");
+            Assert.True(childControl.number == "AU-9");
+            Assert.False(childControl.id == null);
         }
-
     }
 }
